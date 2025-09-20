@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import santosh from "../assets/santosh.jpg";
+import Footer from "../Component/Footer";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const Contact = () => {
   };
 
   return (
+    <>
     <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 text-gray-800 px-4 sm:px-6 md:px-12 lg:px-20 py-12 flex flex-col items-center">
       {/* Header Section */}
       <section className="text-center mb-10 sm:mb-12">
@@ -119,6 +121,8 @@ const Contact = () => {
         </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 };
 
