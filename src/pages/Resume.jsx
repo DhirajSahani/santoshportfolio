@@ -69,9 +69,9 @@ const Resume = () => {
             draggable="false"
           />
           {/* Transparent watermark overlay */}
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-6xl font-bold opacity-20 select-none pointer-events-none">
+          {/* <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-6xl font-bold opacity-20 select-none pointer-events-none">
             © Santosh
-          </div>
+          </div> */}
           <div className="text-center md:text-left">
             <h2 className="text-2xl font-bold mb-2">Santosh Kumar Sahani</h2>
             <p className="text-gray-600 mb-2">Structural Designer</p>
