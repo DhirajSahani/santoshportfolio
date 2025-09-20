@@ -7,10 +7,12 @@ import Services from "./pages/Services";
 import Resume from "./pages/Resume";
 
 
+
 export default function App() {
   return (
     <BrowserRouter>
     <Navbar />
+    
     
       <Routes>
         <Route path="/" element={<Home />} />

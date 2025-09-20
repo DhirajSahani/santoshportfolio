@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -6,6 +6,15 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Redirect to home page on browser refresh
+  useEffect(() => {
+    // Only redirect if the page is not "/" and reload happened
+    if (location.pathname !== "/") {
+      navigate("/", { replace: true });
+    }
+  }, []); // run once on mount
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -32,12 +41,10 @@ export default function Navbar() {
       ref={menuRef}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center py-4">
-        {/* Logo */}
         <div className="text-2xl font-extrabold tracking-wide">
-          <span className="text-yellow-300"></span>My Portfolio<span className="text-yellow-300"></span>
+          My Portfolio
         </div>
 
-        {/* Mobile Menu Icon */}
         <div
           className="md:hidden cursor-pointer z-50"
           onClick={() => setOpen(!open)}
@@ -45,7 +52,6 @@ export default function Navbar() {
           {open ? <FaTimes size={26} /> : <FaBars size={26} />}
         </div>
 
-        {/* Nav Links */}
         <ul
           className={`md:flex md:items-center absolute md:static top-16 left-0 w-full md:w-auto 
           bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 md:bg-transparent 
