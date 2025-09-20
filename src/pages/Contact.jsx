@@ -20,34 +20,36 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 text-gray-800 px-6 md:px-16 lg:px-24 py-16 flex flex-col items-center">
+    <div className="w-full min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 text-gray-800 px-4 sm:px-6 md:px-12 lg:px-20 py-12 flex flex-col items-center">
       {/* Header Section */}
-      <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+      <section className="text-center mb-10 sm:mb-12">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4">
           Get in{" "}
           <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
             Touch
           </span>
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg md:text-xl">
+        <p className="text-gray-600 max-w-xl sm:max-w-2xl mx-auto text-base sm:text-lg md:text-xl">
           Have a question or want to work together? Fill out the form below or
           contact me directly.
         </p>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 w-full max-w-6xl">
         {/* Form */}
-        <div className="bg-white p-8 rounded-3xl shadow-xl">
-          <h2 className="text-2xl font-bold mb-6 text-center">Send a Message</h2>
-          <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg w-full">
+          <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6 text-center">
+            Send a Message
+          </h2>
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
               placeholder="Your Name"
-              className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
               required
             />
             <input
@@ -56,7 +58,7 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Your Email"
-              className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
               required
             />
             <input
@@ -65,7 +67,7 @@ const Contact = () => {
               value={formData.subject}
               onChange={handleChange}
               placeholder="Subject"
-              className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
               required
             />
             <textarea
@@ -73,13 +75,13 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="Your Message"
-              rows="5"
-              className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              rows="4"
+              className="w-full p-3 sm:p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm sm:text-base"
               required
             />
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:from-purple-600 hover:to-blue-500 transition duration-300"
+              className="w-full py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full shadow-lg hover:from-purple-600 hover:to-blue-500 transition duration-300 text-sm sm:text-base"
             >
               Send Message
             </button>
@@ -87,21 +89,21 @@ const Contact = () => {
         </div>
 
         {/* Contact Info */}
-        <div className="bg-gradient-to-r from-pink-400 to-red-500 text-white p-8 rounded-3xl shadow-xl flex flex-col items-center md:items-start">
+        <div className="bg-gradient-to-r from-pink-400 to-red-500 text-white p-6 sm:p-8 rounded-3xl shadow-lg flex flex-col items-center md:items-start w-full">
           {/* Profile Image */}
           <img
             src={santosh}
             alt="Santosh Kumar Sahani"
-            className="w-32 h-32 rounded-2xl mb-6 border-4 border-white"
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl mb-4 sm:mb-6 border-4 border-white"
           />
 
           {/* Heading */}
-          <h2 className="text-2xl font-bold mb-6 text-center md:text-left">
+          <h2 className="text-xl sm:text-2xl md:text-2xl font-bold mb-4 sm:mb-6 text-center md:text-left">
             Contact Info
           </h2>
 
           {/* Contact Details */}
-          <div className="space-y-4 text-center md:text-left">
+          <div className="space-y-3 sm:space-y-4 text-center md:text-left text-sm sm:text-base">
             <p className="flex items-center justify-center md:justify-start">
               📧 Email:{" "}
               <span className="ml-2 font-semibold">santoshkumarsahani778@gmail.com</span>
