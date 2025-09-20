@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
-  const location = useLocation(); // track current route
+  const location = useLocation();
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -18,55 +18,68 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Manually add active class based on current path
+  // Active link styling
   const getLinkClass = (path) =>
-    `hover:text-gray-300 ${location.pathname === path ? "font-bold underline text-yellow-300" : ""}`;
+    `relative block px-3 py-2 transition duration-300 
+     hover:text-yellow-300 
+     ${location.pathname === path 
+       ? "font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-yellow-400 after:to-pink-500 after:rounded-full" 
+       : ""}`;
 
   return (
     <nav
-      className="bg-blue-600 text-white p-4 flex justify-between items-center relative"
+      className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-lg"
       ref={menuRef}
     >
-      {/* Logo */}
-      <div className="text-2xl font-bold">MyPortfolio</div>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center py-4">
+        {/* Logo */}
+        <div className="text-2xl font-extrabold tracking-wide">
+          <span className="text-yellow-300"></span>My Portfolio<span className="text-yellow-300"></span>
+        </div>
 
-      {/* Mobile Menu Icon */}
-      <div className="md:hidden cursor-pointer" onClick={() => setOpen(!open)}>
-        {open ? <FaTimes size={24} /> : <FaBars size={24} />}
+        {/* Mobile Menu Icon */}
+        <div
+          className="md:hidden cursor-pointer z-50"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <FaTimes size={26} /> : <FaBars size={26} />}
+        </div>
+
+        {/* Nav Links */}
+        <ul
+          className={`md:flex md:items-center absolute md:static top-16 left-0 w-full md:w-auto 
+          bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 md:bg-transparent 
+          transition-all duration-500 ease-in-out 
+          ${open ? "opacity-100 visible" : "opacity-0 invisible md:opacity-100 md:visible"} 
+          flex flex-col md:flex-row gap-6 md:gap-8 text-lg font-medium`}
+        >
+          <li>
+            <Link to="/" className={getLinkClass("/")} onClick={() => setOpen(false)}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" className={getLinkClass("/about")} onClick={() => setOpen(false)}>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/services" className={getLinkClass("/services")} onClick={() => setOpen(false)}>
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link to="/resume" className={getLinkClass("/resume")} onClick={() => setOpen(false)}>
+              Resume
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className={getLinkClass("/contact")} onClick={() => setOpen(false)}>
+              Contact
+            </Link>
+          </li>
+        </ul>
       </div>
-
-      {/* Nav Links */}
-      <ul
-        className={`md:flex md:items-center md:static absolute bg-blue-600 w-full md:w-auto left-0 transition-all duration-300 ease-in-out ${
-          open ? "top-16" : "-top-96"
-        } flex flex-col md:flex-row`}
-      >
-        <li className="mx-4 my-2 md:my-0">
-          <Link to="/" className={getLinkClass("/")} onClick={() => setOpen(false)}>
-            Home
-          </Link>
-        </li>
-        <li className="mx-4 my-2 md:my-0">
-          <Link to="/about" className={getLinkClass("/about")} onClick={() => setOpen(false)}>
-            About
-          </Link>
-        </li>
-        <li className="mx-4 my-2 md:my-0">
-          <Link to="/services" className={getLinkClass("/services")} onClick={() => setOpen(false)}>
-            Services
-          </Link>
-        </li>
-        <li className="mx-4 my-2 md:my-0">
-          <Link to="/resume" className={getLinkClass("/resume")} onClick={() => setOpen(false)}>
-            Resume
-          </Link>
-        </li>
-        <li className="mx-4 my-2 md:my-0">
-          <Link to="/contact" className={getLinkClass("/contact")} onClick={() => setOpen(false)}>
-            Contact
-          </Link>
-        </li>
-      </ul>
     </nav>
   );
 }
